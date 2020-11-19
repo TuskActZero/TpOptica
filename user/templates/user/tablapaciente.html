@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-color: cadetblue;"> 
+    <h2 style="background-color: green;">Lista de personas</h2>
+    <ul>
+        {% for pacientes in pacientes %}
+        <li>{{pacientes.nombre}},{{pacientes.apellido}} </li>
+        <a href="edit/{{paciente.id}}">Editar</a>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
