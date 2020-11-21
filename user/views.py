@@ -7,7 +7,9 @@ from django.contrib.auth import login as do_login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import PacienteForm
-from .models import Paciente
+from .models import Paciente, Turno
+from datetime import datetime
+
 # Create your views here.
 
 
@@ -49,9 +51,21 @@ def secretaria(request):
         form = PacienteForm(request.POST)
         instancia = form.save(commit=False)
         instancia.save()
+        return redirect("/secretaria")
     return render(request, "secretaria.html",{'form':form})
 
+def edit(request, paciente_id):
+    instancia = Paciente.objects.get(id=paciente_id)
+    form = PacienteForm(instance=instancia)
 
+    if request.method == "POST":
+        form = PacienteForm(request.POST, instance=instancia)
+
+        if form.is_valid():
+            instancia = form.save(commit=False)
+            instancia.save()
+    return render(request, "editar.html",{'form':form})
+    
 
 def ventas(request):
     return render(request, "ventas.html")
@@ -62,4 +76,12 @@ def ProfesionalMedico(request):
 def taller(request):
     return render(request, "taller.html")
 
+def lista(request):
+    lista_pacientes = Paciente.objects.all()
+
+    return render(request, "tablapaciente.html",{'lista_pacientes' : lista_pacientes})
+
+def turnoView(request):
+
+    return render(request, "turnos.html")
 
