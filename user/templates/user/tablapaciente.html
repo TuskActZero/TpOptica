@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body > {% load crispy_forms_tags %}
-    <h2 style="text-align: center;">Lista de personas</h2> 
+    <h2 style="text-align: center;">Lista de Paciente</h2> 
     <hr/>
     <a style="margin-left: 5px;" href="/secretaria" class="btn btn-success"> Volver</a>
     <hr/>
@@ -18,7 +18,8 @@
             <th scope="col">#</th>
             <th scope="col">nombre</th>
             <th scope="col">apellido</th>
-            <th scope="col">ahrre</th>
+            <th scope="col">editame we</th>
+            <th scope="col">borrame we</th>
           </tr>
         </thead>
             {% for paciente in lista_pacientes %}
@@ -28,10 +29,13 @@
             <td>{{paciente.nombre}}</td>
             <td>{{paciente.apellido}}</td>
             <td><a href="editar/{{paciente.id}}">Editame we</a></td>
+            <td><a href="">Borrame we</a></td>
+            
           </tr>
         </tbody>
         {% endfor %}
-    </table>
+      </table>
+
         <!--{% for pacientes in pacientes %}
         <li>{{pacientes.nombre}},{{pacientes.apellido}} </li>
         {% endfor %}

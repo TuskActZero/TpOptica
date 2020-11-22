@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body> 
+
     <h2>Turnos</h2>
-    {% load crispy_forms_tags %}
-    <form method="POST">    
+    <form method="post">
         {% csrf_token %}
-        {{forms}}
-        <button type="submit" class="btn btn-success">agregar turno</button>
+        {{form.as_p}}
+     <button type="submit" class="btn btn-success">agregar turno</button>
     </form>
     <a href="/secretaria" class="btn btn-success"> Volver</a>
 </body>

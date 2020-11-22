@@ -6,9 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .forms import PacienteForm
+from .forms import PacienteForm , TurnoForm
 from .models import Paciente, Turno
-from datetime import datetime
 
 # Create your views here.
 
@@ -66,6 +65,19 @@ def edit(request, paciente_id):
             instancia.save()
     return render(request, "editar.html",{'form':form})
     
+def turnoView(request):
+    context={
+        'form':TurnoForm
+    }
+    if request.method == 'POST':
+        formulario = TurnoForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            context['mensaje']='Turno guardado'
+        else:
+            context['form']=formulario
+    return render(request, 'turnos.html', context)
+
 
 def ventas(request):
     return render(request, "ventas.html")
@@ -80,8 +92,4 @@ def lista(request):
     lista_pacientes = Paciente.objects.all()
 
     return render(request, "tablapaciente.html",{'lista_pacientes' : lista_pacientes})
-
-def turnoView(request):
-
-    return render(request, "turnos.html")
 
