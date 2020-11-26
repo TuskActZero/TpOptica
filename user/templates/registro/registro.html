@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrate Pa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .asteriskField {
+        display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">
+                {% load static  %}
+                <img src="{% static 'icon\eye-slash.svg' %}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                Optica Blindness
+            </a>
+      </nav>
+      <br>
+   {% load crispy_forms_tags %}
+   <hr />
+    <h2 style="text-align: center;">Bienvenido</h2>
+    <div class="mx-auto" style="width: 200px;">
+        <form method="POST">
+        {{form|crispy}}
+        {% csrf_token %}
+        <input class="btn btn-primary" style="margin: 27%;" type="submit" value="Registrate Pa">
+        </form>
+    </div>
+    <a href="/login" class="btn btn-primary"> logueate pa</a>
+    <hr />
+
+</body>
+</html>
